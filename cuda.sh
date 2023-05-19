@@ -20,9 +20,7 @@ sudo rm -rf /usr/local/cuda*
 ### Make GCC-10 as the default GCC version.
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential
-sudo apt install -y gcc-10 g++-10 cpp-10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo apt-get install libfreeimage3 libfreeimage-dev
 
 # system update
 sudo apt-get update -y
@@ -36,10 +34,7 @@ sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update -y
 
 # install nvidia driver with dependencies
-sudo apt install libnvidia-common-530 -y
-sudo apt install libnvidia-gl-530 -y
-sudo apt install nvidia-driver-530 -y
-sudo apt install nvidia-dkms-530 -y
+sudo apt install nvidia-driver-525 -y
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
 sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -49,7 +44,7 @@ sudo cp /var/cuda-repo-ubuntu2204-11-8-local/cuda-*-keyring.gpg /usr/share/keyri
 sudo apt-get update -y
 sudo apt-get -y install cuda
 
-wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2204-8.6.0.163_1.0-1_amd64.deb
+#wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2204-8.6.0.163_1.0-1_amd64.deb
 sudo dpkg -i cudnn-local-repo-ubuntu2204-8.6.0.163_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update -y
@@ -57,5 +52,13 @@ sudo apt-get install libcudnn8=8.6.0.163-1+cuda11.8 -y
 sudo apt-get install libcudnn8-dev=8.6.0.163-1+cuda11.8 -y
 sudo apt-get install libcudnn8-samples=8.6.0.163-1+cuda11.8 -y
 
-nvidia-smi
-nvcc -V
+sudo apt update -y
+sudo apt upgrade -y
+
+sudo nano $HOME/.profile
+
+# export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# nvidia-smi
+# nvcc -V
