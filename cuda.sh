@@ -62,3 +62,5 @@ sudo nano $HOME/.profile
 
 # nvidia-smi
 # nvcc -V
+
+# pip uninstall MarkupSafe absl-py astunparse cachetools flatbuffers gast google-auth google-auth-oauthlib google-pasta grpcio h5py jax keras libclang markdown ml-dtypes numpy opt-einsum packaging protobuf pyasn1 pyasn1-modules requests-oauthlib rsa scipy tensorboard tensorboard-data-server tensorflow tensorflow-estimator tensorflow-io-gcs-filesystem termcolor typing-extensions werkzeug wrapt
