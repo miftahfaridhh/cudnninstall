@@ -34,7 +34,7 @@ sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update -y
 
 # install nvidia driver with dependencies
-sudo apt install nvidia-driver-525 -y
+sudo apt install nvidia-driver-535 -y
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
 sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
