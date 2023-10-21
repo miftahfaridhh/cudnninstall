@@ -56,6 +56,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 sudo nano $HOME/.profile
+sudo nano $HOME/.bashrc
 
 # export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
 # export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
