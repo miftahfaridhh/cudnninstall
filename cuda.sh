@@ -52,16 +52,16 @@ sudo apt upgrade -y
 # wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz
 # tar -xvf cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz
 # mv cudnn-linux-x86_64-8.6.0.163_cuda11-archive cudnn
-# sudo cp cudnn/include/cudnn*.h /usr/local/cuda/include 
-# sudo cp -P cudnn/lib/libcudnn* /usr/local/cuda/lib64 
-# sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+# sudo cp cudnn/include/cudnn*.h /usr/local/cuda-11.8/include 
+# sudo cp -P cudnn/lib/libcudnn* /usr/local/cuda-11.8/lib64 
+# sudo chmod a+r /usr/local/cuda-11.8/include/cudnn*.h /usr/local/cuda-11.8/lib64/libcudnn*
 
-# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/include:$LD_LIBRARY_PATH' >> ~/.bashrc
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.8/include:$LD_LIBRARY_PATH' >> ~/.bashrc
 # source ~/.bashrc
 
-# echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> $HOME/.profile
-# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> $HOME/.profile
+# echo 'export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}' >> $HOME/.profile
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> $HOME/.profile
 # source $HOME/.profile
 
 # sudo apt update -y
