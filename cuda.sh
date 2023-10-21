@@ -77,11 +77,11 @@ sudo apt upgrade -y
 # nvidia-smi
 # nvcc -V
 
-# python3 -c "import tensorflow as tf print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))"
+# python3 -c "import tensorflow as tf; print(len(tf.config.list_physical_devices('GPU')))"
 
 # IF CANNOT DETECT THE GPU TRY TO RESTART and RUN AGAIN THIS CODE 
 
 # nvidia-smi
 # nvcc -V
 
-# python3 -c "import tensorflow as tf print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))"
+# python3 -c "import tensorflow as tf; print(len(tf.config.list_physical_devices('GPU')))"
