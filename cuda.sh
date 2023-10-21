@@ -7,61 +7,81 @@
 # verify the installation
 ###
 
-### to verify your gpu is cuda enable check
-lspci | grep -i nvidia
+# pip uninstall MarkupSafe absl-py astunparse cachetools flatbuffers gast google-auth google-auth-oauthlib google-pasta grpcio h5py jax keras libclang markdown ml-dtypes numpy opt-einsum packaging protobuf pyasn1 pyasn1-modules requests-oauthlib rsa scipy tensorboard tensorboard-data-server tensorflow tensorflow-estimator tensorflow-io-gcs-filesystem termcolor typing-extensions werkzeug wrapt -y
 
-### If you have previous installation remove it first. 
-sudo apt-get purge nvidia*
-sudo apt remove nvidia-*
-sudo rm /etc/apt/sources.list.d/cuda*
-sudo apt-get autoremove && sudo apt-get autoclean
-sudo rm -rf /usr/local/cuda*
+# ### to verify your gpu is cuda enable check
+# lspci | grep -i nvidia
 
-### Make GCC-10 as the default GCC version.
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt-get install libfreeimage3 libfreeimage-dev
+# ### If you have previous installation remove it first. 
+# sudo apt-get purge nvidia* -y
+# sudo apt remove nvidia-* -y
+# sudo rm /etc/apt/sources.list.d/cuda* -y
+# sudo rm -rf /usr/lib/cuda* -y
+# sudo rm -rf /usr/include/cuda -y
+# sudo apt-get autoremove -y && sudo apt-get autoclean -y
 
-# system update
-sudo apt-get update -y
-sudo apt-get upgrade -y
+# ### Make GCC-10 as the default GCC version.
+# sudo apt update -y
+# sudo apt upgrade -y
+# sudo apt-get install libfreeimage3 libfreeimage-dev -y
 
-# install other import packages
-sudo apt-get install g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+# # system update
+# sudo apt-get update -y
+# sudo apt-get upgrade -y
 
-# first get the PPA repository driver
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update -y
+# # install other import packages
+# sudo apt-get install g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev -y
 
-# install nvidia driver with dependencies
-sudo apt install nvidia-driver-535 -y
+# # first get the PPA repository driver
+# sudo add-apt-repository ppa:graphics-drivers/ppa
+# sudo apt update -y
 
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
-sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
-wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
-sudo cp /var/cuda-repo-ubuntu2204-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update -y
-sudo apt-get -y install cuda
+# # install nvidia driver with dependencies
+# sudo apt install nvidia-driver-535 -y
+# sudo apt-get update -y
+# sudo apt-get upgrade -y
 
-#wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2204-8.6.0.163_1.0-1_amd64.deb
-sudo dpkg -i cudnn-local-repo-ubuntu2204-8.6.0.163_1.0-1_amd64.deb
-sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update -y
-sudo apt-get install libcudnn8=8.6.0.163-1+cuda11.8 -y
-sudo apt-get install libcudnn8-dev=8.6.0.163-1+cuda11.8 -y
-sudo apt-get install libcudnn8-samples=8.6.0.163-1+cuda11.8 -y
-
+#install cuda 11.8
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+sudo sh cuda_11.8.0_520.61.05_linux.run
 sudo apt update -y
 sudo apt upgrade -y
 
-sudo nano $HOME/.profile
-sudo nano $HOME/.bashrc
+#install cudnn 8.6
 
-# export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
-# export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz
+# tar -xvf cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz
+# mv cudnn-linux-x86_64-8.6.0.163_cuda11-archive cudnn
+# sudo cp cudnn/include/cudnn*.h /usr/local/cuda/include 
+# sudo cp -P cudnn/lib/libcudnn* /usr/local/cuda/lib64 
+# sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/include:$LD_LIBRARY_PATH' >> ~/.bashrc
+# source ~/.bashrc
+
+# echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> $HOME/.profile
+# echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> $HOME/.profile
+# source $HOME/.profile
+
+# sudo apt update -y
+# sudo apt upgrade -y
+
+# # Install TensorFlow 2.10 for GPU support
+# wget https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-2.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+# python3 -m pip install tensorflow-2.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl[and-cuda] --force-reinstall
+
+# sudo apt update -y
+# sudo apt upgrade -y
 
 # nvidia-smi
 # nvcc -V
 
-# pip uninstall MarkupSafe absl-py astunparse cachetools flatbuffers gast google-auth google-auth-oauthlib google-pasta grpcio h5py jax keras libclang markdown ml-dtypes numpy opt-einsum packaging protobuf pyasn1 pyasn1-modules requests-oauthlib rsa scipy tensorboard tensorboard-data-server tensorflow tensorflow-estimator tensorflow-io-gcs-filesystem termcolor typing-extensions werkzeug wrapt
+# python3 -c "import tensorflow as tf print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))"
+
+# IF CANNOT DETECT THE GPU TRY TO RESTART and RUN AGAIN THIS CODE 
+
+# nvidia-smi
+# nvcc -V
+
+# python3 -c "import tensorflow as tf print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))"
