@@ -15,9 +15,9 @@ lspci | grep -i nvidia
 ### If you have previous installation remove it first. 
 sudo apt-get purge nvidia* -y
 sudo apt remove nvidia-* -y
-sudo rm /etc/apt/sources.list.d/cuda* -y
-sudo rm -rf /usr/lib/cuda* -y
-sudo rm -rf /usr/include/cuda -y
+sudo rm /etc/apt/sources.list.d/cuda* 
+sudo rm -rf /usr/lib/cuda* 
+sudo rm -rf /usr/include/cuda 
 sudo apt-get autoremove -y && sudo apt-get autoclean -y
 
 ### Make GCC-10 as the default GCC version.
