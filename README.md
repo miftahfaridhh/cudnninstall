@@ -1,3 +1,8 @@
+run
+
+chmod 755 cuda.sh cudnn_tf.sh driver.sh
+
+
 # cudnninstall
 
 referensi
